@@ -26,20 +26,21 @@
       <!-- Links ancla funcionan solo que no hay suficiente contenido -->
       <nav class="nav-links-ancla">
         <ul class="ul-links-ancla">
-          <li class="li-links-ancla"><a class="a-links-ancla" href="#info-list">Datos principales</a></li>
-          <li class="li-links-ancla"><a class="a-links-ancla" href="#additional-data">Datos adicionales</a></li>
+          <li class="li-links-ancla"><a class="a-links-ancla" href="#datosuno">Datos principales</a></li>
+          <li class="li-links-ancla"><a class="a-links-ancla" href="#datosdos">Estudios y conocimientos</a></li>
+          <li class="li-links-ancla"><a class="a-links-ancla" href="#datostres">Datos adicionales</a></li>
         </ul>
       </nav>
-      <header>
+      <header id="datosuno">
         <nav class="nav">
           <!-- GLOBO MODAL QUE SE MUESTRA Y OCULTA DURANTE EL EVENTO CLICK DE LA IMAGEN -->
           <p id="globo" class="iii abajo-izquierda"></p>
-  
+
           <!-- IMAGEN DE PERFIL DE LA PERSONA -->
           <img id="profile-photo" class="profile-photo"
-            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+            src="./bugsbunny.png"
             alt="Imagen de perfil">
-  
+
           <!-- LISTA DE ICONOS QUE CONTIENEN LOS EVENTOS DE QUE DATOS MOSTRAR EN PANTALLA -->
           <ul id="info-list" class="nav-ul">
             <li id="name" class="nav-li-active"><i class="fa-solid fa-user"></i></li>
@@ -49,7 +50,7 @@
             <li id="phone" class="nav-li"><i class="fa-solid fa-phone"></i></li>
           </ul>
         </nav>
-  
+
         <!-- SECCION DONDE SE MOSTRARAN LOS DATOS DE LA PERSONA DE ACUERDO 
           A LOS DISTINTOS EVENTOS -->
         <div class="data">
@@ -59,19 +60,39 @@
       </header>
 
       <!-- Datos adicionales de la persona mostrada en pantalla -->
-      <div class="subtitle">
-        <h2>Datos Adicionales</h2>
-      </div>
-      <main>
-        <ul id="additional-data">
-          <li class="ad-li" id="age"></li>
-          <li class="ad-li" id="gender"></li>
-          <li class="ad-li" id="country"></li>
-          <li class="ad-li" id="state"></li>
-          <li class="ad-li" id="city"></li>
-          <li class="ad-li" id="postcode"></li>
-        </ul>        
-      </main>
+      <section id="datosdos">
+        <div class="subtitle">
+          <h2>Estudios y conocimientos</h2>
+        </div>
+        <div class="caja-datos">
+          <ul id="datos-adicionales">
+            <li class="ad-li" id="estudio"></li>
+            <li class="ad-li" id="java"></li>
+            <li class="ad-li" id="javascript"></li>
+            <li class="ad-li" id="react"></li>
+            <li class="ad-li" id="idioma"></li> 
+          </ul>
+        </div>
+      </section>
+
+      <!-- Datos adicionales de la persona mostrada en pantalla -->
+      <section id="datostres">
+        <div class="subtitle">
+          <h2>Datos Adicionales</h2>
+        </div>
+        <div class="caja-datos">
+          <ul id="datos-adicionales">
+            <li class="ad-li" id="age"></li>
+            <li class="ad-li" id="gender"></li>
+            <li class="ad-li" id="country"></li>
+            <li class="ad-li" id="state"></li>
+            <li class="ad-li" id="city"></li>
+            <li class="ad-li" id="barrio"></li>
+            <li class="ad-li" id="comuna"></li>
+            <li class="ad-li" id="postcode"></li>
+          </ul>
+        </div>
+      </section>
     </div>
   </div>
   <footer class="footer">
