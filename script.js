@@ -302,7 +302,7 @@ window.addEventListener('load', () => {
 	document.getElementById('profile-photo').addEventListener('click', () => {
 		let globo = document.getElementById('globo');
 		globo.classList.add("globo");
-		globo.innerHTML = 'Hola me llamo Danilo Adrian Garcia';
+		globo.innerHTML = 'Hola me llamo '+datos.nombre;
 
 	});
 

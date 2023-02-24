@@ -190,13 +190,6 @@ header {
     height: 50px;
 }
 
-.globo.abajo-izquierda::before {
-    left: 10px;
-    bottom: calc(50px/-1.5);
-    border-radius: 0 0 10em 0;
-    box-shadow: inset calc(50px/-3) calc(50px/4) 0 0 white;
-}
-
 .caja-datos {
     position: relative;
     display: flex;
