@@ -1,5 +1,5 @@
 const datos = {
-	nombre: 'Danilo Garcia',	
+	nombre: 'Danilo Garcia',
 	email: 'garciadaniloadrian@gmail.com',
 	fechaNacimiento: '02/02/1990',
 	direccion: 'Acosta mariano 3500',
@@ -77,50 +77,50 @@ window.addEventListener('load', () => {
 		typeData.innerHTML = 'Hola, mi nombre es';
 		display.innerHTML = datos.nombre;
 	}
-	
+
 	const displayEmail = () => {
 		typeData.innerHTML = 'Mi email es';
 		display.innerHTML = datos.email;
 	}
-	
+
 	const displayFechaNacimiento = () => {
 		typeData.innerHTML = 'Mi fecha de nacimiento es';
 		display.innerHTML = datos.fechaNacimiento;
 	}
-	
+
 	const displayDireccion = () => {
 		typeData.innerHTML = 'Mi dirección es';
 		display.innerHTML = datos.direccion;
 	}
-	
+
 	const displayTelefono = () => {
 		typeData.innerHTML = 'Mi telefono es';
 		display.innerHTML = datos.telefono;
-	}	
+	}
 
 	//AGREGA EVENTO EDITABLE AL NOMBRE
 	document.getElementById('editName').addEventListener('click', () => editName());
 
-	const editName = () => {		
+	const editName = () => {
 		display.innerHTML = '';
 		let input = document.createElement('input');
-        input.setAttribute('type', 'text');
-        input.setAttribute('name', 'item');
+		input.setAttribute('type', 'text');
+		input.setAttribute('name', 'item');
 		input.setAttribute('class', 'inputEdit');
 		input.value = datos.nombre;
 
 		let botonEditar = document.createElement('i');
-		botonEditar.setAttribute('class','fa-solid fa-check edit');
-		botonEditar.setAttribute('id','editarDisplay')
-		botonEditar.addEventListener('click', () =>{
+		botonEditar.setAttribute('class', 'fa-solid fa-check edit');
+		botonEditar.setAttribute('id', 'editarDisplay')
+		botonEditar.addEventListener('click', () => {
 			datos.nombre = input.value;
 			displayName();
 		});
 
 		let botonCancelar = document.createElement('i');
-		botonCancelar.setAttribute('class','fa-solid fa-xmark editred');
-		botonCancelar.setAttribute('id','cancelarDisplay')
-		botonCancelar.addEventListener('click', () =>{
+		botonCancelar.setAttribute('class', 'fa-solid fa-xmark editred');
+		botonCancelar.setAttribute('id', 'cancelarDisplay')
+		botonCancelar.addEventListener('click', () => {
 			displayName();
 		});
 
@@ -132,26 +132,26 @@ window.addEventListener('load', () => {
 	//AGREGA EVENTO EDITABLE AL EMAIL
 	document.getElementById('editEmail').addEventListener('click', () => editEmail());
 
-	const editEmail = () => {		
+	const editEmail = () => {
 		display.innerHTML = '';
 		let input = document.createElement('input');
-        input.setAttribute('type', 'text');
-        input.setAttribute('name', 'item');
+		input.setAttribute('type', 'text');
+		input.setAttribute('name', 'item');
 		input.setAttribute('class', 'inputEdit');
 		input.value = datos.email;
 
 		let botonEditar = document.createElement('i');
-		botonEditar.setAttribute('class','fa-solid fa-check edit');
-		botonEditar.setAttribute('id','editarDisplay')
-		botonEditar.addEventListener('click', () =>{
+		botonEditar.setAttribute('class', 'fa-solid fa-check edit');
+		botonEditar.setAttribute('id', 'editarDisplay')
+		botonEditar.addEventListener('click', () => {
 			datos.email = input.value;
 			displayEmail();
 		});
 
 		let botonCancelar = document.createElement('i');
-		botonCancelar.setAttribute('class','fa-solid fa-xmark editred');
-		botonCancelar.setAttribute('id','cancelarDisplay')
-		botonCancelar.addEventListener('click', () =>{
+		botonCancelar.setAttribute('class', 'fa-solid fa-xmark editred');
+		botonCancelar.setAttribute('id', 'cancelarDisplay')
+		botonCancelar.addEventListener('click', () => {
 			displayEmail();
 		});
 
@@ -163,26 +163,26 @@ window.addEventListener('load', () => {
 	//AGREGA EVENTO EDITABLE A LA FECHA DE NACIMIENTO
 	document.getElementById('editFechaNacimiento').addEventListener('click', () => editFechaNacimiento());
 
-	const editFechaNacimiento = () => {		
+	const editFechaNacimiento = () => {
 		display.innerHTML = '';
 		let input = document.createElement('input');
-        input.setAttribute('type', 'text');
-        input.setAttribute('name', 'item');
+		input.setAttribute('type', 'text');
+		input.setAttribute('name', 'item');
 		input.setAttribute('class', 'inputEdit');
 		input.value = datos.fechaNacimiento;
 
 		let botonEditar = document.createElement('i');
-		botonEditar.setAttribute('class','fa-solid fa-check edit');
-		botonEditar.setAttribute('id','editarDisplay')
-		botonEditar.addEventListener('click', () =>{
+		botonEditar.setAttribute('class', 'fa-solid fa-check edit');
+		botonEditar.setAttribute('id', 'editarDisplay')
+		botonEditar.addEventListener('click', () => {
 			datos.fechaNacimiento = input.value;
 			displayFechaNacimiento();
 		});
 
 		let botonCancelar = document.createElement('i');
-		botonCancelar.setAttribute('class','fa-solid fa-xmark editred');
-		botonCancelar.setAttribute('id','cancelarDisplay')
-		botonCancelar.addEventListener('click', () =>{
+		botonCancelar.setAttribute('class', 'fa-solid fa-xmark editred');
+		botonCancelar.setAttribute('id', 'cancelarDisplay')
+		botonCancelar.addEventListener('click', () => {
 			displayFechaNacimiento();
 		});
 
@@ -194,26 +194,26 @@ window.addEventListener('load', () => {
 	//AGREGA EVENTO EDITABLE A LA DIRECCION
 	document.getElementById('editDireccion').addEventListener('click', () => editDireccion());
 
-	const editDireccion = () => {		
+	const editDireccion = () => {
 		display.innerHTML = '';
 		let input = document.createElement('input');
-        input.setAttribute('type', 'text');
-        input.setAttribute('name', 'item');
+		input.setAttribute('type', 'text');
+		input.setAttribute('name', 'item');
 		input.setAttribute('class', 'inputEdit');
 		input.value = datos.direccion;
 
 		let botonEditar = document.createElement('i');
-		botonEditar.setAttribute('class','fa-solid fa-check edit');
-		botonEditar.setAttribute('id','editarDisplay')
-		botonEditar.addEventListener('click', () =>{
+		botonEditar.setAttribute('class', 'fa-solid fa-check edit');
+		botonEditar.setAttribute('id', 'editarDisplay')
+		botonEditar.addEventListener('click', () => {
 			datos.direccion = input.value;
 			displayDireccion();
 		});
 
 		let botonCancelar = document.createElement('i');
-		botonCancelar.setAttribute('class','fa-solid fa-xmark editred');
-		botonCancelar.setAttribute('id','cancelarDisplay')
-		botonCancelar.addEventListener('click', () =>{
+		botonCancelar.setAttribute('class', 'fa-solid fa-xmark editred');
+		botonCancelar.setAttribute('id', 'cancelarDisplay')
+		botonCancelar.addEventListener('click', () => {
 			displayDireccion();
 		});
 
@@ -225,26 +225,26 @@ window.addEventListener('load', () => {
 	//AGREGA EVENTO EDITABLE AL NUMERO DE TELEFONO
 	document.getElementById('editTelefono').addEventListener('click', () => editTelefono());
 
-	const editTelefono = () => {		
+	const editTelefono = () => {
 		display.innerHTML = '';
 		let input = document.createElement('input');
-        input.setAttribute('type', 'text');
-        input.setAttribute('name', 'item');
+		input.setAttribute('type', 'text');
+		input.setAttribute('name', 'item');
 		input.setAttribute('class', 'inputEdit');
 		input.value = datos.telefono;
 
 		let botonEditar = document.createElement('i');
-		botonEditar.setAttribute('class','fa-solid fa-check edit');
-		botonEditar.setAttribute('id','editarDisplay')
-		botonEditar.addEventListener('click', () =>{
+		botonEditar.setAttribute('class', 'fa-solid fa-check edit');
+		botonEditar.setAttribute('id', 'editarDisplay')
+		botonEditar.addEventListener('click', () => {
 			datos.telefono = input.value;
 			displayTelefono();
 		});
 
 		let botonCancelar = document.createElement('i');
-		botonCancelar.setAttribute('class','fa-solid fa-xmark editred');
-		botonCancelar.setAttribute('id','cancelarDisplay')
-		botonCancelar.addEventListener('click', () =>{
+		botonCancelar.setAttribute('class', 'fa-solid fa-xmark editred');
+		botonCancelar.setAttribute('id', 'cancelarDisplay')
+		botonCancelar.addEventListener('click', () => {
 			displayTelefono();
 		});
 
@@ -264,14 +264,14 @@ window.addEventListener('load', () => {
 
 
 	// DATOS ADICIONALES EN LISTA
-	document.getElementById('age').innerHTML = 'Edad: '+datos.edad;
-	document.getElementById('gender').innerHTML = 'Genero: '+datos.genero;
-	document.getElementById('country').innerHTML = 'Pais: '+datos.pais;
-	document.getElementById('state').innerHTML = 'Localidad: '+datos.localidad;
+	document.getElementById('age').innerHTML = 'Edad: ' + datos.edad;
+	document.getElementById('gender').innerHTML = 'Genero: ' + datos.genero;
+	document.getElementById('country').innerHTML = 'Pais: ' + datos.pais;
+	document.getElementById('state').innerHTML = 'Localidad: ' + datos.localidad;
 	document.getElementById('city').innerHTML = 'Ciudad: Ciudad Autonoma de Buenos Aires';
-	document.getElementById('barrio').innerHTML = 'Barrio: '+datos.barrio;
-	document.getElementById('comuna').innerHTML = 'Coumuna: '+datos.comuna;
-	document.getElementById('postcode').innerHTML = 'Codigo Postal: '+datos.codigoPostal;
+	document.getElementById('barrio').innerHTML = 'Barrio: ' + datos.barrio;
+	document.getElementById('comuna').innerHTML = 'Coumuna: ' + datos.comuna;
+	document.getElementById('postcode').innerHTML = 'Codigo Postal: ' + datos.codigoPostal;
 
 	(() => {
 		let datenow = new Date();
@@ -300,9 +300,4 @@ window.addEventListener('load', () => {
 		globo.classList.remove("globo");
 		globo.innerHTML = '';
 	})
-
 })
-
-
-
-
