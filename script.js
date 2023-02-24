@@ -9,7 +9,7 @@ const datos = {
 	css: 'CSS en dos semanas aprendido',
 	java: 'Java 2 años',
 	javascript: 'Javascript 2 años',
-	react: 'React estudio 1 años',
+	react: 'React 1 año',
 	idioma: 'Ingles avanzado',
 	edad: '33',
 	genero: 'Masculino',
@@ -28,10 +28,7 @@ window.addEventListener('load', () => {
 	let typeData = document.getElementById('type-data');
 
 	// OPTENER UNA LISTA DE HIJO DE LA LISTA
-	let childs = document.getElementById('info-list').children;
-
-	typeData.innerHTML = 'Hola, mi nombre es';
-	display.innerHTML = datos.nombre;
+	let childs = document.getElementById('info-list').children;	
 
 	const listHover = (e) => {
 		handleDisplay(e.currentTarget.id);
@@ -76,27 +73,54 @@ window.addEventListener('load', () => {
 	const displayName = () => {
 		typeData.innerHTML = 'Hola, mi nombre es';
 		display.innerHTML = datos.nombre;
+
+		let botonEditable = document.createElement('i');
+		botonEditable.setAttribute('class', 'fa-solid fa-pen botonEditable');		
+		botonEditable.addEventListener('click', () => editName());
+		display.append(botonEditable);
 	}
 
 	const displayEmail = () => {
-		typeData.innerHTML = 'Mi email es';
+		typeData.innerHTML = 'Mi email es';				
 		display.innerHTML = datos.email;
+
+		let botonEditable = document.createElement('i');
+		botonEditable.setAttribute('class', 'fa-solid fa-pen botonEditable');		
+		botonEditable.addEventListener('click', () => editEmail());
+		display.append(botonEditable);
 	}
 
 	const displayFechaNacimiento = () => {
 		typeData.innerHTML = 'Mi fecha de nacimiento es';
 		display.innerHTML = datos.fechaNacimiento;
+
+		let botonEditable = document.createElement('i');
+		botonEditable.setAttribute('class', 'fa-solid fa-pen botonEditable');		
+		botonEditable.addEventListener('click', () => editFechaNacimiento());
+		display.append(botonEditable);
 	}
 
 	const displayDireccion = () => {
 		typeData.innerHTML = 'Mi dirección es';
 		display.innerHTML = datos.direccion;
+
+		let botonEditable = document.createElement('i');
+		botonEditable.setAttribute('class', 'fa-solid fa-pen botonEditable');		
+		botonEditable.addEventListener('click', () => editDireccion());
+		display.append(botonEditable);
 	}
 
 	const displayTelefono = () => {
 		typeData.innerHTML = 'Mi telefono es';
 		display.innerHTML = datos.telefono;
+
+		let botonEditable = document.createElement('i');
+		botonEditable.setAttribute('class', 'fa-solid fa-pen botonEditable');		
+		botonEditable.addEventListener('click', () => editTelefono());
+		display.append(botonEditable);
 	}
+
+	displayName();
 
 	//AGREGA EVENTO EDITABLE AL NOMBRE
 	document.getElementById('editName').addEventListener('click', () => editName());
@@ -272,17 +296,6 @@ window.addEventListener('load', () => {
 	document.getElementById('barrio').innerHTML = 'Barrio: ' + datos.barrio;
 	document.getElementById('comuna').innerHTML = 'Coumuna: ' + datos.comuna;
 	document.getElementById('postcode').innerHTML = 'Codigo Postal: ' + datos.codigoPostal;
-
-	(() => {
-		let datenow = new Date();
-		let date, month, year;
-		date = datenow.getDate();
-		month = datenow.getMonth() + 1;
-		year = datenow.getFullYear();
-		date = date.toString().padStart(2, '0');
-		month = month.toString().padStart(2, '0');
-		document.getElementById('datenow').innerHTML = `${date}/${month}/${year}`;
-	})();
 
 	// AGREGA UN EVENTO CLICK A LA FOTO DE PERFIL PARA DESPLEGAR UN GLOBO
 	// ESTE MOSTRARA EL NOMBRE DE LA PERSONA EN PANTALLA
