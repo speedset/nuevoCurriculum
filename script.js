@@ -20,6 +20,47 @@ const datos = {
 	codigoPostal: '1437',
 }
 
+const formatFecha = (f) => {	
+	let fecha = new Date(f);
+	let dia = fecha.getDate() < 10 ? '0' + fecha.getDate() : fecha.getDate();
+	let mes = (fecha.getMonth() + 1) < 10 ? '0' + (fecha.getMonth() + 1) : (fecha.getMonth() + 1);
+	return dia + '/' + mes + '/' + fecha.getFullYear();
+}
+
+const validFecha = (f) => {
+	const dateFormatRegex = /^(0?[1-9]|[1-2][0-9]|3[01])[\/](0?[1-9]|1[0-2])[\/]\d{4}$/;
+	let isValidDate = false;
+	if (f.match(dateFormatRegex)) {
+		const dateParts = f.split('/');
+		if (dateParts.length == 3) {
+			const day = parseInt(dateParts[0]);
+			const month = parseInt(dateParts[1]);
+			const year = parseInt(dateParts[2]);
+			if (month < 1 || month > 12) {
+				return false;
+			}
+			const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+			let monthLength = daysInMonth[month - 1];
+			if ((month == 2) && ((!(year % 4) && year % 100) || !(year % 400))) {
+				monthLength = 29;
+			}
+			if (day < 1 || day > monthLength) {
+				return false;
+			}
+			isValidDate = true;
+		}
+	}
+	return isValidDate;
+}
+
+const validEmail = (e) => {
+  if (e.match(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 window.addEventListener('load', () => {
 	// OPTENER EL ELEMENTO DONDE CAMBIAR LOS DATOS DE LA PERSONA
 	let display = document.getElementById('display');
@@ -42,32 +83,6 @@ window.addEventListener('load', () => {
 
 	for (let child of childs) {
 		child.addEventListener('mouseover', listHover);
-	}
-
-	// METODO MANEJADOR PARA LO QUE SE MUESTRA EN PANTALLA
-	// CUANDO SE REALIZA EL EVENTO HOVER EN ALGUNO DE LOS ICONOS
-	// DE ACUERDO AL ID
-	const handleDisplay = (id) => {
-		switch (id) {
-			case 'name':
-				displayName();
-				break;
-			case 'email':
-				displayEmail();
-				break;
-			case 'date':
-				displayFechaNacimiento();
-				break;
-			case 'location':
-				displayDireccion();
-				break;
-			case 'phone':
-				displayTelefono();
-				break;
-			default:
-				displayName();
-				break;
-		}
 	}
 
 	const displayName = () => {
@@ -120,6 +135,32 @@ window.addEventListener('load', () => {
 		display.append(botonEditable);
 	}
 
+	// METODO MANEJADOR PARA LO QUE SE MUESTRA EN PANTALLA
+	// CUANDO SE REALIZA EL EVENTO HOVER EN ALGUNO DE LOS ICONOS
+	// DE ACUERDO AL ID
+	const handleDisplay = (id) => {
+		switch (id) {
+			case 'name':
+				displayName();
+				break;
+			case 'email':
+				displayEmail();
+				break;
+			case 'date':
+				displayFechaNacimiento();
+				break;
+			case 'location':
+				displayDireccion();
+				break;
+			case 'phone':
+				displayTelefono();
+				break;
+			default:
+				displayName();
+				break;
+		}
+	}
+
 	displayName();
 
 	//AGREGA EVENTO EDITABLE AL NOMBRE
@@ -168,7 +209,9 @@ window.addEventListener('load', () => {
 		botonEditar.setAttribute('class', 'fa-solid fa-check edit');
 		botonEditar.setAttribute('id', 'editarDisplay')
 		botonEditar.addEventListener('click', () => {
-			datos.email = input.value;
+			if(validEmail(input.value)){
+				datos.email = input.value;
+			}			
 			displayEmail();
 		});
 
@@ -179,9 +222,33 @@ window.addEventListener('load', () => {
 			displayEmail();
 		});
 
+		let emailok = document.createElement('p')
+		emailok.setAttribute('class', 'fechaOk')
+		emailok.innerHTML = 'Email valido';
+
+		let emailerror = document.createElement('p')
+		emailerror.setAttribute('class', 'fechaError')
+		emailerror.innerHTML = 'Email invalido';
+
 		display.append(input);
 		display.append(botonEditar);
 		display.append(botonCancelar);
+		display.append(emailok);
+		display.append(emailerror);
+
+		input.addEventListener('input', (e) => {			
+			if (validEmail(e.target.value)) {
+				input.classList.remove('inputError');
+				input.classList.add('inputOk');
+				emailerror.style.display = 'none';
+				emailok.style.display = 'block';
+			} else {
+				input.classList.remove('inputOk');
+				input.classList.add('inputError');
+				emailok.style.display = 'none';
+				emailerror.style.display = 'block';
+			}
+		})	
 	}
 
 	//AGREGA EVENTO EDITABLE A LA FECHA DE NACIMIENTO
@@ -193,13 +260,15 @@ window.addEventListener('load', () => {
 		input.setAttribute('type', 'text');
 		input.setAttribute('name', 'item');
 		input.setAttribute('class', 'inputEdit');
-		input.value = datos.fechaNacimiento;
+		input.value = datos.fechaNacimiento;		
 
 		let botonEditar = document.createElement('i');
 		botonEditar.setAttribute('class', 'fa-solid fa-check edit');
 		botonEditar.setAttribute('id', 'editarDisplay')
 		botonEditar.addEventListener('click', () => {
-			datos.fechaNacimiento = input.value;
+			if (validFecha(input.value)) {
+				datos.fechaNacimiento = input.value;
+			}
 			displayFechaNacimiento();
 		});
 
@@ -210,9 +279,34 @@ window.addEventListener('load', () => {
 			displayFechaNacimiento();
 		});
 
+		let fechaok = document.createElement('p')
+		fechaok.setAttribute('class', 'fechaOk')
+		fechaok.innerHTML = 'Fecha valida';
+
+		let fechaerror = document.createElement('p')
+		fechaerror.setAttribute('class', 'fechaError')
+		fechaerror.innerHTML = 'Fecha invalida';
+
 		display.append(input);
 		display.append(botonEditar);
 		display.append(botonCancelar);
+		display.append(fechaok);
+		display.append(fechaerror);
+
+		input.addEventListener('input', (e) => {
+			console.log(e.target.value, validFecha(e.target.value));
+			if (validFecha(e.target.value)) {
+				input.classList.remove('inputError');
+				input.classList.add('inputOk');
+				fechaerror.style.display = 'none';
+				fechaok.style.display = 'block';
+			} else {
+				input.classList.remove('inputOk');
+				input.classList.add('inputError');
+				fechaok.style.display = 'none';
+			fechaerror.style.display = 'block';
+			}
+		})	
 	}
 
 	//AGREGA EVENTO EDITABLE A LA DIRECCION

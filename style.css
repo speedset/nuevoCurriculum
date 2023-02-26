@@ -287,6 +287,30 @@ header {
     width: 250px;
 }
 
+.inputOk {
+    border: 1px solid green;
+    outline: none;
+}
+
+.fechaOk{    
+    display:none;
+    color:green;
+    margin-block-start: 2px;
+    font-size: 10px;
+}
+
+.fechaError{
+    display:none;
+    color:red;
+    margin: 2px;
+    font-size: 10px;
+}
+
+.inputError {
+    border: 1px solid red;
+    outline: none;
+}
+
 .edit {
     cursor: pointer;
     color: rgb(73, 185, 58);
